@@ -16,11 +16,11 @@ def get_stars_jpeg(jpeg_directory, file_extension='CR2'):
             path_name = jpeg_directory + '\\' + photo
             with open(path_name, "rb") as photo_file:
                 img_as_text = str(photo_file.read())
-                xmp_tekst = re.search(pattern, img_as_text)
-                if xmp_tekst is None:
+                xmp_text = re.search(pattern, img_as_text)
+                if xmp_text is None:
                     rating = 0
                 else:
-                    rating = int(xmp_tekst.group()[-1:])
+                    rating = int(xmp_text.group()[-1:])
             if rating > 0:
                 jpeg_stars_list.append(photo[0:-3] + file_extension)  # сразу меняем расширение
             pbar.update(1)
